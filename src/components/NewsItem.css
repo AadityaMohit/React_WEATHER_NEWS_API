@@ -1,0 +1,38 @@
+.body{
+    background:linear-gradient(180deg, #b54dff, #340447);
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;  background:linear-gradient(180deg, #b54dff, #340447);
+  }
+  
+  .card-img-top {
+    max-width: 100%;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .btn {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  

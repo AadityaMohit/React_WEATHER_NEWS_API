@@ -1,0 +1,26 @@
+/* newsNavbar.css */
+.container{
+  background:linear-gradient(180deg, #b54dff, #340447);
+}
+.news-navbar {
+    background-color: black;
+
+  }
+  .navbar_link:hover{
+    color: rgb(0, 0, 0);
+  }
+  
+  .news-navbar .navbar-brand {
+    /* Custom styles for the navbar-brand */
+  }
+  
+  .news-navbar .navbar-nav .nav-link {
+    /* Custom styles for the nav links */
+  }
+  
+  .news-navbar .dropdown-menu .dropdown-item {
+    /* Custom styles for dropdown items */
+  }
+  
+  /* Add more custom styles as needed */
+  

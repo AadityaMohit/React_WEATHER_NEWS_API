@@ -1,0 +1,115 @@
+.body{
+    background:linear-gradient(180deg, #160223, #a521da);
+}
+
+.container {
+    height: 550px; /* Reduced height */
+    width: 80%;
+    max-width: 700px; /* Reduced max-width */
+    margin: 50px auto; /* Reduced margin */
+    border-radius: 10px; /* Slightly reduced border-radius */
+    background:linear-gradient(180deg, #b54dff, #340447);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Reduced box shadow */
+}
+
+.top-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Reduced gap */
+    padding-top: 40px; /* Reduced padding */
+}
+
+.top-bar input {
+    width: 300px; /* Reduced width */
+    height: 60px; /* Reduced height */
+    background: #ebfffc;
+    border: none;
+    outline: none;
+    border-radius: 30px; /* Slightly reduced border-radius */
+    padding-left: 30px; /* Reduced padding */
+    color: #626262;
+    font-size: 16px; /* Reduced font-size */
+    font-weight: 400;
+}
+
+.search-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px; /* Reduced width */
+    height: 60px; /* Reduced height */
+    background: #ebfffc;
+    cursor: pointer;
+    border-radius: 30px; /* Slightly reduced border-radius */
+}
+
+.weather-image {
+    margin-top: 20px; /* Reduced margin-top */
+    display: flex;
+    justify-content: center;
+}
+
+.weather-temp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 80px; /* Reduced font-size */
+    font-weight: 400;
+}
+
+.weather-temp::after {
+    content: "°C";
+    font-size: 40px; /* Reduced font-size */
+    margin-left: 5px; /* Reduced margin-left */
+}
+
+.weather-location {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 80px; /* Reduced font-size */
+    font-weight: 400;
+}
+
+.data-container {
+    margin-top: 30px; /* Reduced margin-top */
+    color: white;
+    display: flex;
+    justify-content: center;
+}.weather_temp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 60px; /* Adjusted font-size */
+    font-weight: 400;
+}
+
+.weather_temp::after {
+    content: "";
+    font-size: 30px; /* Adjusted font-size */
+    margin-left: 5px; /* Reduced margin-left */
+}
+
+
+.element {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Reduced gap */
+    margin-left: 5px; /* Reduced margin-left */
+}
+
+.data {
+    font-size: 28px; /* Reduced font-size */
+    font-weight: 400;
+}
+
+.text {
+    font-size: 16px; /* Reduced font-size */
+    font-weight: 400;
+}
+
+.icon {
+    margin-top: 5px; /* Reduced margin-top */
+}

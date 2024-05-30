@@ -1,0 +1,32 @@
+.about-container {
+    background:linear-gradient(180deg, #b54dff, #340447);
+    background-color: purple;
+    color: white;
+    padding-top: 80px; /* Increase padding for top */
+    padding-bottom: 80px; /* Increase padding for bottom */
+  }
+  
+  .about-container h2 {
+    margin-bottom: 40px; /* Increase margin bottom for section headings */
+  }
+  
+  .about-container p {
+    font-size: 18px; /* Increase font size for paragraphs */
+    line-height: 1.6; /* Increase line height for better readability */
+  }
+  
+  .about-container .info-section {
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent background for sections */
+    padding: 30px; /* Padding for each section */
+    border-radius: 10px; /* Rounded corners for sections */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow for sections */
+  }
+  
+  .about-container .info-section h2 {
+    color: #ffd700; /* Gold color for section headings */
+  }
+  
+  .about-container .info-section p {
+    color: #cccccc; /* Light gray color for section content */
+  }
+  

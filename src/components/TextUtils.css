@@ -1,0 +1,49 @@
+.text-utils-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 66px;
+    background: linear-gradient(180deg, #4e1478, #891eb4); /* Purple background color */
+    color: white;
+    /* border-radius: 5px; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  .text-area {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  .process-button {
+    display: flex;
+    padding: 10px 20px;
+    background: linear-gradient(180deg, #4e1478, #891eb4);/* Darker purple button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .process-button:hover {
+    background-color: #6a0dad; /* Lighter purple button color on hover */
+  }
+  
+  .processed-text {
+    margin-top: 20px;
+  }
+  
+  .processed-text h2 {
+    margin-bottom: 10px;
+  }
+  

@@ -1,0 +1,109 @@
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background:linear-gradient(180deg, #b54dff, #340447);
+  color: #fff;
+  padding: 1rem; font-family: "Platypi", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
+}/* App.css */
+.fade-in {
+  animation: fadeInAnimation 1s ease-in forwards;
+}
+/* App.css */
+.image {
+  width: 200px; /* Adjust the width as needed */
+  max-width: 100%; /* Ensure the image doesn't exceed its container */
+  height: 50px; /* Maintain aspect ratio */
+  margin-bottom: 20px; /* Add space below the image */
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.about-container {
+  background-color: purple;
+  color: white;
+  padding-top: 40px; /* Adjust as needed */
+  padding-bottom: 40px; /* Adjust as needed */
+}
+
+.about-container h2 {
+  margin-bottom: 20px;
+}
+
+
+.navbar__brand {
+  font-size: 1.5rem;
+}
+
+.navbar__links {
+  list-style: none;
+  display: flex;
+  font-size: medium;
+}
+
+.navbar__link {
+  margin-left: 1rem;
+  cursor: pointer;
+  font-size: medium;
+}
+
+.navbar__link:hover {
+  text-decoration: underline;
+  color: #340447;
+}
+/* App.css */
+@keyframes motionAnimation1 {
+  0% {
+    transform: translateY(10px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+.motion {
+  animation: motionAnimation 2s ease-in-out infinite;
+}
+@keyframes motionAnimation {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(10px) rotate(10deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(-10deg);
+  }
+  75% {
+    transform: translateY(10px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+}
+
+.motion {
+  animation: motionAnimation 2s ease-in-out infinite;
+}
+.container{
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: italic;
+}
