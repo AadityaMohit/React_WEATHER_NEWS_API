@@ -5,19 +5,21 @@ import axios from 'axios'; // Import axios
 
 function NewsBoard({ category, setCategory }) {
   const [articles, setArticles] = useState([]);
-  const API_KEY = process.env.REACT_APP_API_KEY; // Accessing the API key from the environment variables
+  const API_KEY = '7c35652a2539481daf404b0b24e0413d'; // Ensure you are using your API key
+  const PROXY_URL = 'https://cors-anywhere.herokuapp.com/'; // Proxy URL
+  const API_URL = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`;
 
   useEffect(() => {
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`;
-
-    axios.get(url) // Use axios to fetch the data
-      .then(response => {
-        console.log(response.data); // Log the response to see its structure
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${PROXY_URL}${API_URL}`);
         setArticles(response.data.articles || []);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error('Error fetching news:', error);
-      });
+      }
+    };
+
+    fetchData();
   }, [category]);
 
   return (
