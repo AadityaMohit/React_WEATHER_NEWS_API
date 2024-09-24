@@ -9,19 +9,24 @@ function News({ category, setCategory }) {
   const API_KEY = '7c35652a2539481daf404b0b24e0413d';
 
   useEffect(() => {
-    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`;
 
-    axios.get(url) // Use axios instead of fetch
+    fetch(url)
       .then(response => {
-        console.log(response.data); // Log the response to see its structure
-        setArticles(response.data.articles || []);
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        setArticles(data.articles || []);
       })
       .catch(error => {
         console.error('Error fetching news:', error);
       });
-  
-  }, [category]);
-  
+}, [category]);
+
   return (
     <>
       <nav className="navbar navbar-expand-lg news-navbar" style={{ background: 'linear-gradient(180deg, #b54dff, #340447)' }}>
