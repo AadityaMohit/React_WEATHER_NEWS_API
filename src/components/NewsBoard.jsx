@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.css'; // Import the CSS file
 import NewsItem from './NewsItem';
+import axios from 'axios'; // Import axios
 
 function News({ category, setCategory }) {
 
   const [articles, setArticles] = useState([]);
-  const API_KEY = '1a7bc9d99b7c499f83355dd14597d4a6';
+  const API_KEY = '7c35652a2539481daf404b0b24e0413d';
 
   useEffect(() => {
     let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`;
 
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data); // Log the response to see its structure
-        setArticles(data.articles || []);
+    axios.get(url) // Use axios instead of fetch
+      .then(response => {
+        console.log(response.data); // Log the response to see its structure
+        setArticles(response.data.articles || []);
       })
       .catch(error => {
         console.error('Error fetching news:', error);
