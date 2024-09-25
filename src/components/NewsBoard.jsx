@@ -5,15 +5,15 @@ import axios from 'axios'; // Import axios
 
 function NewsBoard({ category, setCategory }) {
   const [articles, setArticles] = useState([]);
-  const API_KEY = '7c35652a2539481daf404b0b24e0413d'; // Accessing the API key from the environment variables
+  const API_KEY = '586b48197bd33a56488f6d810e74960d'; // GNews API key
 
   useEffect(() => {
-    const url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`;
+    const url = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=us&max=10&apikey=${API_KEY}`;
 
-    axios.get(url) // Use axios to fetch the data
+    axios.get(url)
       .then(response => {
         console.log(response.data); // Log the response to see its structure
-        setArticles(response.data.articles || []);
+        setArticles(response.data.articles || []); // Adjust if the data structure is different
       })
       .catch(error => {
         console.error('Error fetching news:', error);
@@ -55,7 +55,7 @@ function NewsBoard({ category, setCategory }) {
       </h2>
 
       {articles && articles.map((news, index) => {
-        return <NewsItem key={index} title={news.title} description={news.description} src={news.urlToImage} url={news.url} />;
+        return <NewsItem key={index} title={news.title} description={news.description} src={news.image} url={news.url} />; // Adjust the image and other fields as per GNews API response
       })}
     </>
   );
