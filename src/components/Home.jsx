@@ -10,7 +10,7 @@ function Home() {
   return (
     <div style={styles.container} className="fade-in">
       <img src={logo} alt="Logo" style={{ ...styles.logo, ...styles.motion }} />
-      <h1 style={styles.heading}>Welcome to Our Page</h1>
+      <h1 style={styles.heading}>Developer <b>Aaditya_Mohit</b></h1>
       <p style={styles.description}>
         Explore our features:
       </p>
