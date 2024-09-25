@@ -11,7 +11,7 @@ function Navbar() {
 
   return (
     <nav className="news-navbar">
-      <div className="navbar__brand">React App</div>
+      <div className="navbar__brand">React App Developer Aaditya Mohit</div>
       <div className={`navbar__links ${isOpen ? 'active' : ''}`}>
         <li><Link className="navbar__link_text" to='/weather'>Weather_Now</Link></li>
         <li className="navbar__link"><Link to="/about" className="navbar__link__text">About</Link></li>
