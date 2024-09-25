@@ -5,7 +5,7 @@ import axios from 'axios'; // Import axios
 
 function NewsBoard({ category, setCategory }) {
   const [articles, setArticles] = useState([]);
-  const API_KEY = '586b48197bd33a56488f6d810e74960d'; // GNews API key
+  const API_KEY = '586b48197bd33a56488f6d810e74960d'; 
 
   useEffect(() => {
     const url = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=us&max=10&apikey=${API_KEY}`;
