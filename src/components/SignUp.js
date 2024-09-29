@@ -19,7 +19,7 @@ const SignUp = () => {
       await createUserWithEmailAndPassword(auth, email, password);
       toast.success('Sign-up successful! Redirecting to login...', {
         position: "top-right",
-        autoClose: 3000, // Closes after 3 seconds
+        autoClose: 3000,  
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -28,7 +28,7 @@ const SignUp = () => {
       });
       setTimeout(() => {
         navigate('/login');
-      }, 3000);  // Redirect after 3 seconds
+      }, 3000);   
     } catch (error) {
       setError(error.message);
       toast.error(error.message, {
@@ -46,23 +46,28 @@ const SignUp = () => {
   const [content, setContent] = useState("Heyy! There 🕶️");
   useEffect(() => {
     let a = {
-      "a": "Welcome! Ready to sign up?",
-      "b": "Let's get you started!",
-      "c": "Already have an account? Login here!"  
+        "a": "Welcome! Ready to sign up?",
+        "b": "Let's get you started!",
+        "c": "Already have an account? Login here!"  
     };
     let keys = Object.keys(a);
     let index = 0;
-    const interval = setInterval(() => {
-      setContent(a[keys[index]]);
-      index = (index + 1) % keys.length;
-    }, 3000);
 
-    return () => clearInterval(interval);  // Cleanup on unmount
-  }, []);
+     
+    setContent(a[keys[index]]);
+    
+    const interval = setInterval(() => {
+        index = (index + 1) % keys.length;  
+        setContent(a[keys[index]]);  
+    }, 4000);   
+    return () => clearInterval(interval);   
+}, []);
+
 
   return (
     <div className="signup-container">
       <div className="cartoon-container">
+      <div className="version-badge">Version 2.0</div>
         <img src={cartoon} alt="Cartoon Character" className="cartoon-character" />
         <div className="chat-box">
           <p>{content}</p>

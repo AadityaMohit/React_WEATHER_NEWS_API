@@ -1,9 +1,9 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase'; 
-import { Link, useNavigate } from 'react-router-dom'; 
-import './Login.css';  
-import cartoonImage from '../components/Assets/Remove background project.png' 
+import { auth } from '../firebase';
+import { Link, useNavigate } from 'react-router-dom';
+import './Login.css';
+import cartoonImage from '../components/Assets/Remove background project.png';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -19,28 +19,28 @@ const Login = () => {
       alert(error.message);
     }
   };
-  const [content, setcontent] = useState('Heyy ! Welcome 🕶️')
+
+  const [content, setContent] = useState('Heyy ! Welcome to version 2.0 🕶️');
+
   useEffect(() => {
-
-    let a={
-      "a":"Heyy ! Welcome 🕶️",
-      "b":"Make Your LogIn",
-      "c":"Enjoy Hitting the API'S"
-    }
-    let keys=Object.keys(a)
-    let index=0
-    const interval=setInterval(() => {
-      
-setcontent(a[keys[index]])
-index=(index+1)%keys.length
-
-
-    }, 2000);
-  }, [])
-  
+    const messages = {
+      a: 'version 2.0 🕶️',
+      b: 'Make Your LogIn',
+      c: 'Enjoy Hitting the API\'s',
+    };
+    const keys = Object.keys(messages);
+    let index = 0;
+    const interval = setInterval(() => {
+      setContent(messages[keys[index]]);
+      index = (index + 1) % keys.length;
+    }, 6000);
+    
+    return () => clearInterval(interval); // Cleanup the interval on unmount
+  }, []);
 
   return (
     <div className="login-container">
+      <div className="version-badge">Version 2.0</div>
       <div className="cartoon-container">
         <img src={cartoonImage} alt="Cartoon Character" className="cartoon-character" />
         <div className="chat-box">

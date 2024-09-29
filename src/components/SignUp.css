@@ -129,3 +129,29 @@
       width: 100px;  
   }
 }
+
+.version-badge {
+  background: linear-gradient(270deg, #800080, #ffffff, #800080); /* Initial gradient */
+  background-size: 400% 400%; /* Set the size for animation */
+  color: #800080; /* Purple text color */
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 20px; /* Increased font size for better visibility */
+  margin-bottom: 20px;
+  text-align: center; /* Center text in the badge */
+  font-weight: bold; /* Make text bold */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+  animation: gradientAnimation 6s ease infinite; /* Continuous animation */
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%; /* Start position */
+  }
+  50% {
+    background-position: 100% 50%; /* Mid position */
+  }
+  100% {
+    background-position: 0% 50%; /* End position */
+  }
+}
