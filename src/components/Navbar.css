@@ -106,3 +106,18 @@ a{
     text-align: center;
   }
 }
+.navbar__logout-btn {
+  background-color: #7A3FB4; /* Purple matching your page */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.navbar__logout-btn svg {
+  margin-right: 8px;
+}

@@ -1,0 +1,117 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;  
+  background: linear-gradient(180deg, #b54dff, #340447); 
+}
+
+.cartoon-container {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  margin-bottom: 20px; /* Add some spacing below */
+}
+
+.cartoon-character {
+  width: 300px;  
+  height: auto;
+  margin-right: 20px; 
+}
+
+.chat-box {
+  background: rgba(255, 255, 255, 0.8);  
+  border-radius: 5px;
+  padding: 10px;
+  animation: chat-animation 5s infinite; 
+  width: 150px; 
+}
+
+@keyframes chat-animation {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.login-form {
+  background-color: #fff; 
+  padding: 20px;
+  border-radius: 8px;  
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  width: 300px; 
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  text-align: center;  
+}
+
+.login-form input {
+  width: 100%;  
+  padding: 10px;
+  margin: 10px 0;  
+  border: 1px solid #ddd;  
+  border-radius: 4px;  
+}
+
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;  
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;  
+}
+
+.login-button:hover {
+  background-color: #0056b3;  
+}
+
+.signup-link {
+  color: #007bff; 
+  text-decoration: none; 
+}
+
+.signup-link:hover {
+  text-decoration: underline; 
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .login-form {
+    width: 90%;  /* Adjust width for smaller screens */
+  }
+  .cartoon-character {
+    width: 80px; /* Adjust cartoon image size for smaller screens */
+  }
+  .chat-box {
+    width: 120px;  /* Adjust chat box width for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form {
+    padding: 15px;  /* Reduce padding on smaller screens */
+  }
+  .cartoon-character {
+    width: 70px;  /* Adjust cartoon image size for extra small screens */
+  }
+  .chat-box {
+    width: 100px;  /* Adjust chat box width for extra small screens */
+  }
+}
+.Toastify__toast-container {
+  z-index: 9999; /* Ensure it's above other content */
+}
