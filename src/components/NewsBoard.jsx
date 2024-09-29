@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import './Navbar.css'; // Import the CSS file
+import './Navbar.css';  
 import NewsItem from './NewsItem';
-import axios from 'axios'; // Import axios
+import axios from 'axios';  
+import loading_spinner from './Assets/loader-removebg-preview.png'; 
 
 function NewsBoard({ category, setCategory }) {
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true); 
   const API_KEY = '586b48197bd33a56488f6d810e74960d'; 
 
   useEffect(() => {
     const url = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&country=us&max=10&apikey=${API_KEY}`;
 
+    setLoading(true);  
     axios.get(url)
       .then(response => {
-        console.log(response.data); // Log the response to see its structure
-        setArticles(response.data.articles || []); // Adjust if the data structure is different
+        console.log(response.data); 
+        setArticles(response.data.articles || []);  
       })
       .catch(error => {
         console.error('Error fetching news:', error);
+      })
+      .finally(() => {
+        setLoading(false); // Set loading to false after fetching
       });
   }, [category]);
 
@@ -54,9 +60,31 @@ function NewsBoard({ category, setCategory }) {
         <span className='badge text-dark bg-danger'>Latest News</span>
       </h2>
 
-      {articles && articles.map((news, index) => {
-        return <NewsItem key={index} title={news.title} description={news.description} src={news.image} url={news.url} />; // Adjust the image and other fields as per GNews API response
-      })}
+      {loading ? ( // Show loader while articles are loading
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center', 
+            alignItems: 'center',      
+            height: '300px',           
+          }}
+        >
+          <img
+            src={loading_spinner}
+            alt="Loading"
+            style={{
+              width: '150px',    
+              height: '150px',   
+              animation: 'spin 1s linear infinite',  
+              display: 'block' 
+            }}
+          />
+        </div>
+      ) : (
+        articles && articles.map((news, index) => {
+          return <NewsItem key={index} title={news.title} description={news.description} src={news.image} url={news.url} />; // Adjust the image and other fields as per GNews API response
+        })
+      )}
     </>
   );
 }

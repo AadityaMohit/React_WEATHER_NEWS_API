@@ -17,7 +17,7 @@ const SignUp = () => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      toast.success('Sign-up successful! Redirecting to login...', {
+      toast.success('Sign-up successful! .', {
         position: "top-right",
         autoClose: 3000,  
         hideProgressBar: false,
@@ -27,7 +27,7 @@ const SignUp = () => {
         progress: undefined,
       });
       setTimeout(() => {
-        navigate('/login');
+        navigate('/');
       }, 3000);   
     } catch (error) {
       setError(error.message);
