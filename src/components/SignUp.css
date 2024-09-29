@@ -6,6 +6,18 @@
   background: linear-gradient(180deg, #b54dff, #340447); 
 }
 
+.cartoon-container {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  margin-bottom: 20px; /* Add some spacing below */
+}
+
+.cartoon-character {
+  width: 300px;  
+  height: auto;
+  margin-right: 20px; 
+}
+
 .signup-form {
   background-color: #fff; 
   padding: 20px;
@@ -57,18 +69,6 @@
   text-decoration: underline;
 }
 
-.cartoon-container {
-  display: flex;
-  align-items: flex-start; /* Align items to the top */
-  margin-bottom: 20px; /* Add some spacing below */
-}
-
-.cartoon-character {
-  width: 300px;  
-  height: auto;
-  margin-right: 20px; 
-}
-
 .chat-box {
   background: rgba(255, 255, 255, 0.8);  
   border-radius: 5px;
@@ -98,11 +98,14 @@
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
   .signup-container {
+      flex-direction: column; /* Stack children vertically on smaller screens */
+      align-items: center; /* Center align items */
       padding: 10px; /* Add some padding on smaller screens */
   }
 
   .signup-form {
       padding: 15px; 
+      margin-left: 0; /* Reset left margin on smaller screens */
   }
 
   .cartoon-character {

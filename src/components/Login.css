@@ -90,12 +90,23 @@
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
+  .login-container {
+    flex-direction: column; /* Stack children vertically on smaller screens */
+    align-items: center; /* Center align items */
+  }
+  
+  .cartoon-container {
+    margin-bottom: 10px; /* Reduce spacing for smaller screens */
+  }
+
   .login-form {
     width: 90%;  /* Adjust width for smaller screens */
   }
+
   .cartoon-character {
     width: 80px; /* Adjust cartoon image size for smaller screens */
   }
+
   .chat-box {
     width: 120px;  /* Adjust chat box width for smaller screens */
   }
@@ -105,13 +116,16 @@
   .login-form {
     padding: 15px;  /* Reduce padding on smaller screens */
   }
+  
   .cartoon-character {
     width: 70px;  /* Adjust cartoon image size for extra small screens */
   }
+
   .chat-box {
     width: 100px;  /* Adjust chat box width for extra small screens */
   }
 }
+
 .Toastify__toast-container {
   z-index: 9999; /* Ensure it's above other content */
 }
