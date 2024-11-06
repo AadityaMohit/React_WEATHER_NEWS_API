@@ -88,70 +88,126 @@
   text-decoration: underline; 
 }
 
-/* Media Queries for Responsiveness */
+/* Forgot Password Button */
+.forgot-password {
+  color: #007bff;
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Password Reset Form */
+.password-reset {
+  margin-top: 20px;
+  display: none;
+  text-align: center;
+}
+
+.password-reset.active {
+  display: block;
+}
+
+.password-reset input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.reset-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;  
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.reset-button:hover {
+  background-color: #218838;
+}
+
+.reset-message {
+  color: #28a745;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+ 
 @media (max-width: 768px) {
   .login-container {
-    flex-direction: column; /* Stack children vertically on smaller screens */
-    align-items: center; /* Center align items */
+    flex-direction: column; 
+    align-items: center;  
   }
   
   .cartoon-container {
-    margin-bottom: 10px; /* Reduce spacing for smaller screens */
+    margin-bottom: 10px;  
   }
 
   .login-form {
-    width: 90%;  /* Adjust width for smaller screens */
+    width: 90%;   
   }
 
   .cartoon-character {
-    width: 80px; /* Adjust cartoon image size for smaller screens */
+    width: 80px; 
   }
 
   .chat-box {
-    width: 120px;  /* Adjust chat box width for smaller screens */
+    width: 120px;  
   }
 }
 
 @media (max-width: 480px) {
   .login-form {
-    padding: 15px;  /* Reduce padding on smaller screens */
+    padding: 15px;   
   }
   
   .cartoon-character {
-    width: 70px;  /* Adjust cartoon image size for extra small screens */
+    width: 70px;   
   }
 
   .chat-box {
-    width: 100px;  /* Adjust chat box width for extra small screens */
+    width: 100px;   
   }
 }
 
 .Toastify__toast-container {
-  z-index: 9999; /* Ensure it's above other content */
+  z-index: 9999; 
 }
 
 .version-badge {
-  background: linear-gradient(270deg, #800080, #ffffff, #800080); /* Initial gradient */
-  background-size: 400% 400%; /* Set the size for animation */
-  color: #800080; /* Purple text color */
+  background: linear-gradient(270deg, #800080, #ffffff, #800080); 
+  background-size: 400% 400%; 
+  color: #800080; 
   padding: 12px 24px;
   border-radius: 25px;
-  font-size: 20px; /* Increased font size for better visibility */
+  font-size: 20px; 
   margin-bottom: 20px;
-  text-align: center; /* Center text in the badge */
-  font-weight: bold; /* Make text bold */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
-  animation: gradientAnimation 6s ease infinite; /* Continuous animation */
+  text-align: center;  
+  font-weight: bold; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  animation: gradientAnimation 6s ease infinite;  
 }
 
 @keyframes gradientAnimation {
   0% {
-    background-position: 0% 50%; /* Start position */
+    background-position: 0% 50%;  
   }
   50% {
-    background-position: 100% 50%; /* Mid position */
+    background-position: 100% 50%; 
   }
   100% {
-    background-position: 0% 50%; /* End position */
+    background-position: 0% 50%; 
   }
+}
+.password-reset {
+color: white;
 }

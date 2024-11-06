@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
 import './Login.css';
@@ -8,6 +8,9 @@ import cartoonImage from '../components/Assets/Remove background project.png';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailReset, setEmailReset] = useState('');
+  const [resetSent, setResetSent] = useState(false);
+  const [showResetForm, setShowResetForm] = useState(false); // Toggle password reset form
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -18,6 +21,20 @@ const Login = () => {
     } catch (error) {
       alert(error.message);
     }
+  };
+
+  const handlePasswordReset = async (e) => {
+    e.preventDefault();
+    try {
+      await sendPasswordResetEmail(auth, emailReset);
+      setResetSent(true);
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const toggleResetForm = () => {
+    setShowResetForm(!showResetForm); // Toggle the password reset form
   };
 
   const [content, setContent] = useState('Heyy ! Welcome to version 2.0 🕶️');
@@ -35,7 +52,7 @@ const Login = () => {
       index = (index + 1) % keys.length;
     }, 6000);
     
-    return () => clearInterval(interval); // Cleanup the interval on unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -51,23 +68,38 @@ const Login = () => {
         <h2>Login</h2>
         <input
           type="email"
+          placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
         />
         <input
           type="password"
+          placeholder="Enter your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
         />
         <button type="submit" className="login-button">Login</button>
-        <p>
-          Don't have an account? <Link to="/signup" className="signup-link">Sign up here</Link>
-        </p>
+        <div className="forgot-password" onClick={toggleResetForm}>
+          Forgot Password?
+        </div>
+        <Link to="/signup" className="signup-link">
+          Don't have an account? Sign Up
+        </Link>
       </form>
+
+      {showResetForm && (
+        <div className="password-reset active">
+          <h3>Reset your password</h3>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={emailReset}
+            onChange={(e) => setEmailReset(e.target.value)}
+          />
+          <button onClick={handlePasswordReset} className="reset-button">Reset Password</button>
+          {resetSent && <p className="reset-message">Password reset link sent! Check your email.</p>}
+        </div>
+      )}
     </div>
   );
 };
