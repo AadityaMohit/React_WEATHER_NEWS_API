@@ -176,21 +176,91 @@ button:hover {
     background: #2c3e50;
 }
 
-/* Search History */
-.search-history {
+ .search-history {
     margin-top: 20px;
     padding: 10px;
-    background: #4e1d6d;
     border-radius: 8px;
     text-align: center;
     color: #ddd;
 }
-
+.favorite-cities ul li{
+    list-style: none;
+}
 .search-history ul {
     list-style: none;
     padding: 0;
+    gap: 17px;
+
+    display: flex;
+}
+ 
+.favorite-cities ul {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;  
+    justify-content: normal;
+  }
+  .favorite-btn {
+    background: linear-gradient(145deg,#c82a0e, #ff4400);  
+    color: white;  
+    border: none;  
+    padding: 10px 20px;  
+    font-size: 1em;  
+    border-radius: 25px;  
+    cursor: pointer;  
+    transition: background-color 0.3s ease, transform 0.3s ease; 
 }
 
+.favorite-btn:hover {
+    background: linear-gradient(145deg, #ff6347, #ff7f50);  
+    transform: scale(1.05);  
+}
+
+  .favorite-city-card {
+    margin: 11px;
+    background-color: #f9f9f9;
+    padding: 7px;   
+    border-radius: 8px;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);   
+    width: 150px;  
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .favorite-city-card:hover {
+    transform: translateY(-4px);  /* Slightly less movement on hover */
+  }
+  
+  .favorite-city-card span {
+    font-size: 1em;  /* Smaller font size */
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    margin-bottom: 8px;  /* Reduced space between text and button */
+  }
+  
+  .favorite-city-card button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff4040;
+    font-size: 1.2em;  /* Slightly smaller button size */
+    position: absolute;
+    top: 8px;  /* Adjusted position */
+    right: 8px;  /* Adjusted position */
+    transition: color 0.3s ease;
+  }
+  
+  .favorite-city-card button:hover {
+    color: #d90000;  /* Darker red on hover */
+  }
+  
 .search-history li {
     cursor: pointer;
     padding: 5px 0;

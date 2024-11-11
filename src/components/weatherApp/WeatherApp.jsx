@@ -8,6 +8,8 @@ import {
   FaSun,
   FaMoon,
   FaClock,
+  FaStar,
+  FaTrash
 } from "react-icons/fa";
 import search_icon from "../Assets/search.png";
 import clear_icon from "../Assets/clear.png";
@@ -41,6 +43,12 @@ function WeatherApp() {
   const [darkMode, setDarkMode] = useState(false);
 
   const api_key = "a0f8d0f1f96b6fd8074ee4af91184470";
+
+  useEffect(() => {
+    // Load favorite cities from localStorage on initial render
+    const savedFavorites = JSON.parse(localStorage.getItem("favoriteCities")) || [];
+    setFavoriteCities(savedFavorites);
+  }, []);
 
   const search = async () => {
     const element = document.getElementsByClassName("cityInput")[0];
@@ -94,6 +102,21 @@ function WeatherApp() {
     }
   };
 
+  const addFavorite = () => {
+    const city = document.getElementsByClassName("cityInput")[0].value;
+    if (city && !favoriteCities.includes(city)) {
+      const updatedFavorites = [...favoriteCities, city];
+      setFavoriteCities(updatedFavorites);
+      localStorage.setItem("favoriteCities", JSON.stringify(updatedFavorites));
+    }
+  };
+
+  const removeFavorite = (cityToRemove) => {
+    const updatedFavorites = favoriteCities.filter((city) => city !== cityToRemove);
+    setFavoriteCities(updatedFavorites);
+    localStorage.setItem("favoriteCities", JSON.stringify(updatedFavorites));
+  };
+
   const getWindDirection = (deg) => {
     const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
     return directions[Math.round(deg / 45) % 8];
@@ -133,13 +156,34 @@ function WeatherApp() {
         <div className="search-icon" onClick={search}>
           <FaSearch />
         </div>
+        <button onClick={addFavorite} className="favorite-btn">
+          <FaStar />  
+        </button>
         <button onClick={toggleDarkMode} className="theme-toggle-btn">
-  {darkMode ? <FaSun /> : <FaMoon />}
- 
- 
-</button>
-
+          {darkMode ? <FaSun /> : <FaMoon />}
+        </button>
       </header>
+      
+      <section className="favorite-cities">
+  <ul>
+    {favoriteCities.map((city, index) => (
+      <li key={index} className="favorite-city-card">
+        <span
+          onClick={() => {
+            document.getElementsByClassName("cityInput")[0].value = city;
+            search();
+          }}
+        >
+          {city}
+        </span>
+        <button onClick={() => removeFavorite(city)} className="remove-favorite-btn">
+          <FaTrash />
+        </button>
+      </li>
+    ))}
+  </ul>
+</section>
+
 
       {loading ? (
         <div className="loader">
@@ -147,81 +191,61 @@ function WeatherApp() {
         </div>
       ) : error ? (
         <div className="error">{error}</div>
-      ) : (
+      ) : temperature ? (
         <>
-          <div className="current-weather">
-            <img src={wicon} alt="Weather" />
-            <div className="weather-info">
-              <div className="temperature">{temperature}</div>
-              <div className="feels-like">Feels Like: {feelsLike}</div>
-              <div className="weather-desc">{weatherDescription}</div>
-            </div>
+        <div className="current-weather">
+          <img src={wicon} alt="Weather" />
+          <div className="weather-info">
+            <div className="temperature">{temperature}</div>
+            <div className="feels-like">Feels Like: {feelsLike}</div>
+            <div className="weather-desc">{weatherDescription}</div>
           </div>
+        </div>
 
-          <section className="extra-info">
-            <div className="humidity">
-              <FaTint /> Humidity: {humidity}
-            </div>
-            <div className="wind-speed">
-              <FaWind /> Wind Speed: {windSpeed}
-            </div>
-            <div className="wind-direction">
-              <FaCompass /> Wind Direction: {windDirection}
-            </div>
-            <div className="pressure">
-              <FaCompressArrowsAlt /> Pressure: {pressure}
-            </div>
-            <div className="uv-index">
-              <FaSun /> UV Index: {uvIndex}
-            </div>
-            <div className="sunrise">
-              <FaSun /> Sunrise: {sunrise}
-            </div>
-            <div className="sunset">
-              <FaMoon /> Sunset: {sunset}
-            </div>
-            <div className="local-time">
-              <FaClock /> Local Time: {localTime}
-            </div>
-          </section>
+        <section className="extra-info">
+          <div className="humidity">
+            <FaTint /> Humidity: {humidity}
+          </div>
+          <div className="wind-speed">
+            <FaWind /> Wind Speed: {windSpeed}
+          </div>
+          <div className="wind-direction">
+            <FaCompass /> Wind Direction: {windDirection}
+          </div>
+          <div className="pressure">
+            <FaCompressArrowsAlt /> Pressure: {pressure}
+          </div>
+          <div className="uv-index">
+            <FaSun /> UV Index: {uvIndex}
+          </div>
+          <div className="sunrise">
+            <FaSun /> Sunrise: {sunrise}
+          </div>
+          <div className="sunset">
+            <FaMoon /> Sunset: {sunset}
+          </div>
+          <div className="local-time">
+            <FaClock /> Local Time: {localTime}
+          </div>
+        </section>
 
-          <section className="forecast">
-            <h3>5-Day Forecast</h3>
-            <div className="forecast-container">
-              {forecast.map((day, index) => (
-                <div
-                  key={index}
-                  className={`forecast-element ${Math.floor(day.main.temp) < 20 ? 'cold' : day.weather[0].main === 'Rain' ? 'rainy' : 'warm'}`}
-                >
-                  <div>{new Date(day.dt * 1000).toLocaleDateString()}</div>
-                  <img src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`} alt="weather icon" />
-                  <div>{Math.floor(day.main.temp)}°C</div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="search-history">
-            <h3>Search History</h3>
-            <ul>
-              {history.map((city, index) => (
-                <li key={index} onClick={() => { document.getElementsByClassName("cityInput")[0].value = city; search(); }}>
-                  {city}
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section className="favorite-cities">
-            <h3>Favorite Cities</h3>
-            <ul>
-              {favoriteCities.map((city, index) => (
-                <li key={index}>{city}</li>
-              ))}
-            </ul>
-          </section>
-        </>
-      )}
+        <section className="forecast">
+          <h3>5-Day Forecast</h3>
+          <div className="forecast-container">
+            {forecast.map((day, index) => (
+              <div
+                key={index}
+                className={`forecast-element ${Math.floor(day.main.temp) < 20 ? 'cold' : day.weather[0].main === 'Rain' ? 'rainy' : 'warm'}`}
+              >
+                <div>{new Date(day.dt * 1000).toLocaleDateString()}</div>
+                <img src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`} alt="weather icon" />
+                <div>{Math.floor(day.main.temp)}°C</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </>
+      ) : null}
     </div>
   );
 }
