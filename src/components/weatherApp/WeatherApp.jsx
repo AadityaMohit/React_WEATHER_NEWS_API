@@ -91,6 +91,31 @@ function WeatherApp() {
       setLocalTime(new Date(weatherData.dt * 1000).toLocaleTimeString());
       setWeatherDescription(weatherData.weather[0].description);
 
+      // Set weather icon based on condition
+      const condition = weatherData.weather[0].main.toLowerCase();
+      switch (condition) {
+        case 'clear':
+          setwicon(clear_icon);
+          break;
+        case 'clouds':
+          setwicon(cloud_icon);
+          break;
+        case 'drizzle':
+          setwicon(drizzle_icon);
+          break;
+        case 'rain':
+          setwicon(rain_icon);
+          break;
+        case 'snow':
+          setwicon(snow_icon);
+          break;
+        case 'wind':
+          setwicon(wind_icon);
+          break;
+        default:
+          setwicon(cloud_icon);
+      }
+
       const forecastList = forecastData.list.filter((_, index) => index % 8 === 0);
       setForecast(forecastList);
 
@@ -165,25 +190,24 @@ function WeatherApp() {
       </header>
       
       <section className="favorite-cities">
-  <ul>
-    {favoriteCities.map((city, index) => (
-      <li key={index} className="favorite-city-card">
-        <span
-          onClick={() => {
-            document.getElementsByClassName("cityInput")[0].value = city;
-            search();
-          }}
-        >
-          {city}
-        </span>
-        <button onClick={() => removeFavorite(city)} className="remove-favorite-btn">
-          <FaTrash />
-        </button>
-      </li>
-    ))}
-  </ul>
-</section>
-
+        <ul>
+          {favoriteCities.map((city, index) => (
+            <li key={index} className="favorite-city-card">
+              <span
+                onClick={() => {
+                  document.getElementsByClassName("cityInput")[0].value = city;
+                  search();
+                }}
+              >
+                {city}
+              </span>
+              <button onClick={() => removeFavorite(city)} className="remove-favorite-btn">
+                <FaTrash />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       {loading ? (
         <div className="loader">
@@ -245,7 +269,9 @@ function WeatherApp() {
           </div>
         </section>
       </>
-      ) : null}
+      ) : (
+        <div  > </div>
+      )}
     </div>
   );
 }
